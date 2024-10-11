@@ -1,0 +1,27 @@
+config:
+  target: "https://theaxolotlapi.netlify.app/"
+  phases:
+    - duration: 10
+      arrivalRate: 2
+  plugins:
+    ensure:
+      thresholds:
+        - http.response_time.p95: 100
+        - http.response_time.p99: 75
+        - http.response_time.max: 250
+
+scenarios:
+  - flow:
+      - get:
+          url: "/"
+          validate:
+            - statusCode: 200
+            - contentLength: 100
+      - post:
+          url: "/"
+          json:
+            from: "payload.json"
+          validate:
+            - statusCode: 200
+            - responseTime:
+                max: 2000
