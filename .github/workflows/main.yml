@@ -12,8 +12,5 @@ jobs:
       - name: Install Depedencis
         run: npm ci
       - name: Run Cypress Test
-<<<<<<< HEAD
         uses: cypress-io/github-action@v3
-=======
-        uses: cypres-io/github-action@v3
->>>>>>> 04abb33ec764c865aac9b3ec4809c8bd7a8d3aa9
+      
